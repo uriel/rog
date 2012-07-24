@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+  <title>rog - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="/doc/style.css">
+<script type="text/javascript" src="/doc/godocs.js"></script>
+
+</head>
+<body>
+
+<div id="topbar"><div class="container wide">
+
+<form method="GET" action="/search">
+<div id="menu">
+<a href="/doc/">Documents</a>
+<a href="/ref/">References</a>
+<a href="/pkg/">Packages</a>
+<a href="/project/">The Project</a>
+<a href="/help/">Help</a>
+<input type="text" id="search" name="q" class="inactive" value="Search">
+</div>
+<div id="heading"><a href="/">The Go Programming Language</a></div>
+</form>
+
+</div></div>
+
+<div id="page" class="wide">
+
+
+  <div id="plusone"><g:plusone size="small" annotation="none"></g:plusone></div>
+  <h1>Package rog</h1>
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+
+	
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "."</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#index">Index</a></dd>
+			
+			
+				<dd><a href="#subdirectories">Subdirectories</a></dd>
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Package rog provides algorithms and data structures for creating roguelike games.
+</p>
+<pre>package main
+
+import (
+    &#34;github.com/ajhager/rog&#34;
+)
+
+func main() {
+    rog.Open(48, 32, &#34;rog&#34;)
+    for rog.IsOpen() {
+        rog.Set(20, 15, nil, nil, &#34;Hello, 世界&#34;)
+        if rog.Key == &#34;escape&#34; {
+            rog.Close()
+        }
+        rog.Flush()
+    }
+}
+</pre>
+
+			</div>
+		</div>
+		
+	
+		<h2 id="index">Index</h2>
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+		<div id="manual-nav">
+			<dl>
+			
+			
+				<dd><a href="#variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="#Close">func Close()</a></dd>
+			
+				
+				<dd><a href="#Dt">func Dt() float64</a></dd>
+			
+				
+				<dd><a href="#FOVCircular">func FOVCircular(fov *FOVMap, x, y, r int, walls bool)</a></dd>
+			
+				
+				<dd><a href="#Fill">func Fill(x, y, w, h int, fg, bg interface{}, ch rune)</a></dd>
+			
+				
+				<dd><a href="#Flush">func Flush()</a></dd>
+			
+				
+				<dd><a href="#Fps">func Fps() int64</a></dd>
+			
+				
+				<dd><a href="#Height">func Height() int</a></dd>
+			
+				
+				<dd><a href="#IsOpen">func IsOpen() bool</a></dd>
+			
+				
+				<dd><a href="#Line">func Line(x0, y0, x1, y1 int) []image.Point</a></dd>
+			
+				
+				<dd><a href="#Open">func Open(width, height int, title string) (err error)</a></dd>
+			
+				
+				<dd><a href="#Screenshot">func Screenshot(name string) (err error)</a></dd>
+			
+				
+				<dd><a href="#Set">func Set(x, y int, fg, bg interface{}, data string, rest ...interface{})</a></dd>
+			
+				
+				<dd><a href="#SetR">func SetR(x, y, w, h int, fg, bg interface{}, data string, rest ...interface{})</a></dd>
+			
+				
+				<dd><a href="#SetTitle">func SetTitle(title string)</a></dd>
+			
+				
+				<dd><a href="#Width">func Width() int</a></dd>
+			
+			
+				
+				<dd><a href="#Blender">type Blender</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Add">func Add(top color.Color) Blender</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#AddAlpha">func AddAlpha(top color.Color, a float64) Blender</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Alpha">func Alpha(top color.Color, a float64) Blender</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Burn">func Burn(top color.Color) Blender</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Darken">func Darken(top color.Color) Blender</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Dodge">func Dodge(top color.Color) Blender</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Lighten">func Lighten(top color.Color) Blender</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Multiply">func Multiply(top color.Color) Blender</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Overlay">func Overlay(top color.Color) Blender</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Scale">func Scale(s float64) Blender</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Screen">func Screen(top color.Color) Blender</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Console">type Console</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewConsole">func NewConsole(width, height int) *Console</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Console.Fill">func (con *Console) Fill(x, y, w, h int, fg, bg interface{}, ch rune)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Console.Height">func (con *Console) Height() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Console.Render">func (c *Console) Render(im draw.Image)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Console.Set">func (con *Console) Set(x, y int, fg, bg interface{}, data string, rest ...interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Console.SetR">func (con *Console) SetR(x, y, w, h int, fg, bg interface{}, data string, rest ...interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Console.Width">func (con *Console) Width() int</a></dd>
+				
+			
+				
+				<dd><a href="#FOVAlgo">type FOVAlgo</a></dd>
+				
+				
+			
+				
+				<dd><a href="#FOVMap">type FOVMap</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewFOVMap">func NewFOVMap(width, height int) *FOVMap</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FOVMap.Block">func (this *FOVMap) Block(x, y int, blocked bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FOVMap.Clear">func (this *FOVMap) Clear()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FOVMap.Height">func (this *FOVMap) Height() int</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FOVMap.In">func (this *FOVMap) In(x, y int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FOVMap.Look">func (this *FOVMap) Look(x, y int) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FOVMap.Update">func (this *FOVMap) Update(x, y, radius int, includeWalls bool, algo FOVAlgo)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#FOVMap.Width">func (this *FOVMap) Width() int</a></dd>
+				
+			
+				
+				<dd><a href="#RGB">type RGB</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#HEX">func HEX(n uint32) RGB</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#RGB.Add">func (c RGB) Add(o color.Color) color.Color</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#RGB.AddAlpha">func (c RGB) AddAlpha(o color.Color, a float64) color.Color</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#RGB.Alpha">func (c RGB) Alpha(o color.Color, a float64) color.Color</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#RGB.Burn">func (c RGB) Burn(o color.Color) color.Color</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#RGB.Darken">func (c RGB) Darken(o color.Color) color.Color</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#RGB.Dodge">func (c RGB) Dodge(o color.Color) color.Color</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#RGB.Lighten">func (c RGB) Lighten(o color.Color) color.Color</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#RGB.Multiply">func (c RGB) Multiply(o color.Color) color.Color</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#RGB.Overlay">func (c RGB) Overlay(o color.Color) color.Color</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#RGB.RGBA">func (c RGB) RGBA() (r, g, b, a uint32)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#RGB.Scale">func (c RGB) Scale(s float64) color.Color</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#RGB.Screen">func (c RGB) Screen(o color.Color) color.Color</a></dd>
+				
+			
+			
+		</dl>
+
+		
+
+		
+			<h4>Package files</h4>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/pkg/color.go">color.go</a>
+			
+				<a href="/src/pkg/console.go">console.go</a>
+			
+				<a href="/src/pkg/font.go">font.go</a>
+			
+				<a href="/src/pkg/fov.go">fov.go</a>
+			
+				<a href="/src/pkg/line.go">line.go</a>
+			
+				<a href="/src/pkg/rog.go">rog.go</a>
+			
+			</span>
+			</p>
+		
+	
+		
+		
+			<h2 id="variables">Variables</h2>
+			
+				<pre>var (
+    Mouse *mouse
+    Key   string
+)</pre>
+				
+			
+		
+		
+			
+			
+			<h2 id="Close">func <a href="/src/pkg/rog.go?s=1470:1482#L64">Close</a></h2>
+			<pre>func Close()</pre>
+			<p>
+Close shuts down the windowing system.
+No rog functions should be called after this.
+</p>
+
+			
+		
+			
+			
+			<h2 id="Dt">func <a href="/src/pkg/rog.go?s=2221:2238#L98">Dt</a></h2>
+			<pre>func Dt() float64</pre>
+			<p>
+Dt returns length of the last frame in seconds.
+</p>
+
+			
+		
+			
+			
+			<h2 id="FOVCircular">func <a href="/src/pkg/fov.go?s=3203:3257#L138">FOVCircular</a></h2>
+			<pre>func FOVCircular(fov *FOVMap, x, y, r int, walls bool)</pre>
+			<p>
+FOVCicular raycasts out from the vantage in a circle.
+</p>
+
+			
+		
+			
+			
+			<h2 id="Fill">func <a href="/src/pkg/rog.go?s=2789:2843#L118">Fill</a></h2>
+			<pre>func Fill(x, y, w, h int, fg, bg interface{}, ch rune)</pre>
+			<p>
+Fill draws a rect on the root console.
+</p>
+
+			
+		
+			
+			
+			<h2 id="Flush">func <a href="/src/pkg/rog.go?s=2006:2018#L88">Flush</a></h2>
+			<pre>func Flush()</pre>
+			<p>
+Flush renders the root console to the window.
+</p>
+
+			
+		
+			
+			
+			<h2 id="Fps">func <a href="/src/pkg/rog.go?s=2326:2342#L103">Fps</a></h2>
+			<pre>func Fps() int64</pre>
+			<p>
+Fps returns the number of rendered frames per second.
+</p>
+
+			
+		
+			
+			
+			<h2 id="Height">func <a href="/src/pkg/rog.go?s=3065:3082#L128">Height</a></h2>
+			<pre>func Height() int</pre>
+			<p>
+Height returns the height of the root console in cells.
+</p>
+
+			
+		
+			
+			
+			<h2 id="IsOpen">func <a href="/src/pkg/rog.go?s=896:914#L37">IsOpen</a></h2>
+			<pre>func IsOpen() bool</pre>
+			<p>
+IsOpen returns whether the rog window is open or not.
+</p>
+
+			
+		
+			
+			
+			<h2 id="Line">func <a href="/src/pkg/line.go?s=115:158#L1">Line</a></h2>
+			<pre>func Line(x0, y0, x1, y1 int) []image.Point</pre>
+			<p>
+Line returns the points on the grid that the line would pass through.
+</p>
+
+			
+		
+			
+			
+			<h2 id="Open">func <a href="/src/pkg/rog.go?s=1018:1072#L42">Open</a></h2>
+			<pre>func Open(width, height int, title string) (err error)</pre>
+			<p>
+Open creates a window and a root console with size width by height cells.
+</p>
+
+			
+		
+			
+			
+			<h2 id="Screenshot">func <a href="/src/pkg/rog.go?s=1610:1650#L71">Screenshot</a></h2>
+			<pre>func Screenshot(name string) (err error)</pre>
+			<p>
+Screenshot will save the window buffer as an image to name.png.
+</p>
+
+			
+		
+			
+			
+			<h2 id="Set">func <a href="/src/pkg/rog.go?s=2408:2480#L108">Set</a></h2>
+			<pre>func Set(x, y int, fg, bg interface{}, data string, rest ...interface{})</pre>
+			<p>
+Set draws on the root console.
+</p>
+
+			
+		
+			
+			
+			<h2 id="SetR">func <a href="/src/pkg/rog.go?s=2605:2684#L113">SetR</a></h2>
+			<pre>func SetR(x, y, w, h int, fg, bg interface{}, data string, rest ...interface{})</pre>
+			<p>
+Set draws on the root console with wrapping bounds of x, y, w, h.
+</p>
+
+			
+		
+			
+			
+			<h2 id="SetTitle">func <a href="/src/pkg/rog.go?s=1895:1922#L83">SetTitle</a></h2>
+			<pre>func SetTitle(title string)</pre>
+			<p>
+SetTitle changes the title of the window.
+</p>
+
+			
+		
+			
+			
+			<h2 id="Width">func <a href="/src/pkg/rog.go?s=2952:2968#L123">Width</a></h2>
+			<pre>func Width() int</pre>
+			<p>
+Width returns the width of the root console in cells.
+</p>
+
+			
+		
+		
+			
+			
+			<h2 id="Blender">type <a href="/src/pkg/color.go?s=5233:5275#L218">Blender</a></h2>
+			<pre>type Blender func(color.Color) color.Color</pre>
+			<p>
+Blender
+</p>
+
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="Add">func <a href="/src/pkg/color.go?s=6285:6318#L268">Add</a></h3>
+				<pre>func Add(top color.Color) Blender</pre>
+				
+				
+			
+				
+				<h3 id="AddAlpha">func <a href="/src/pkg/color.go?s=6406:6455#L274">AddAlpha</a></h3>
+				<pre>func AddAlpha(top color.Color, a float64) Blender</pre>
+				
+				
+			
+				
+				<h3 id="Alpha">func <a href="/src/pkg/color.go?s=6545:6591#L280">Alpha</a></h3>
+				<pre>func Alpha(top color.Color, a float64) Blender</pre>
+				
+				
+			
+				
+				<h3 id="Burn">func <a href="/src/pkg/color.go?s=6045:6079#L256">Burn</a></h3>
+				<pre>func Burn(top color.Color) Blender</pre>
+				
+				
+			
+				
+				<h3 id="Darken">func <a href="/src/pkg/color.go?s=5918:5954#L250">Darken</a></h3>
+				<pre>func Darken(top color.Color) Blender</pre>
+				
+				
+			
+				
+				<h3 id="Dodge">func <a href="/src/pkg/color.go?s=5408:5443#L226">Dodge</a></h3>
+				<pre>func Dodge(top color.Color) Blender</pre>
+				
+				
+			
+				
+				<h3 id="Lighten">func <a href="/src/pkg/color.go?s=5789:5826#L244">Lighten</a></h3>
+				<pre>func Lighten(top color.Color) Blender</pre>
+				
+				
+			
+				
+				<h3 id="Multiply">func <a href="/src/pkg/color.go?s=5277:5315#L220">Multiply</a></h3>
+				<pre>func Multiply(top color.Color) Blender</pre>
+				
+				
+			
+				
+				<h3 id="Overlay">func <a href="/src/pkg/color.go?s=5660:5697#L238">Overlay</a></h3>
+				<pre>func Overlay(top color.Color) Blender</pre>
+				
+				
+			
+				
+				<h3 id="Scale">func <a href="/src/pkg/color.go?s=6168:6197#L262">Scale</a></h3>
+				<pre>func Scale(s float64) Blender</pre>
+				
+				
+			
+				
+				<h3 id="Screen">func <a href="/src/pkg/color.go?s=5533:5569#L232">Screen</a></h3>
+				<pre>func Screen(top color.Color) Blender</pre>
+				
+				
+			
+
+			
+		
+			
+			
+			<h2 id="Console">type <a href="/src/pkg/console.go?s=198:315#L2">Console</a></h2>
+			<pre>type Console struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+			<p>
+Console is a double buffered grid of unicode characters that can be rendered to an image.Image.
+</p>
+
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="NewConsole">func <a href="/src/pkg/console.go?s=360:403#L10">NewConsole</a></h3>
+				<pre>func NewConsole(width, height int) *Console</pre>
+				<p>
+NewConsole creates an empty console.
+</p>
+
+				
+			
+
+			
+				
+				<h3 id="Console.Fill">func (*Console) <a href="/src/pkg/console.go?s=3018:3087#L104">Fill</a></h3>
+				<pre>func (con *Console) Fill(x, y, w, h int, fg, bg interface{}, ch rune)</pre>
+				<p>
+Fill draws a rect on the root console using ch.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Console.Height">func (*Console) <a href="/src/pkg/console.go?s=4170:4202#L143">Height</a></h3>
+				<pre>func (con *Console) Height() int</pre>
+				<p>
+Height returns the height of the console in cells.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Console.Render">func (*Console) <a href="/src/pkg/console.go?s=3246:3285#L113">Render</a></h3>
+				<pre>func (c *Console) Render(im draw.Image)</pre>
+				<p>
+Render draws the console onto an image.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Console.Set">func (*Console) <a href="/src/pkg/console.go?s=2426:2513#L93">Set</a></h3>
+				<pre>func (con *Console) Set(x, y int, fg, bg interface{}, data string, rest ...interface{})</pre>
+				<p>
+Set draws a string starting at x,y onto the console, wrapping at the bounds if needed.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Console.SetR">func (*Console) <a href="/src/pkg/console.go?s=2809:2903#L99">SetR</a></h3>
+				<pre>func (con *Console) SetR(x, y, w, h int, fg, bg interface{}, data string, rest ...interface{})</pre>
+				<p>
+Set draws a string starting at x,y onto the console, wrapping at the bounds created by x, y, w, h if needed.
+If h is 0, the text will cut off at the bottom of the console, otherwise it will cut off after the y+h row.
+</p>
+
+				
+				
+			
+				
+				<h3 id="Console.Width">func (*Console) <a href="/src/pkg/console.go?s=4060:4091#L138">Width</a></h3>
+				<pre>func (con *Console) Width() int</pre>
+				<p>
+Width returns the width of the console in cells.
+</p>
+
+				
+				
+			
+		
+			
+			
+			<h2 id="FOVAlgo">type <a href="/src/pkg/fov.go?s=149:196#L1">FOVAlgo</a></h2>
+			<pre>type FOVAlgo func(*FOVMap, int, int, int, bool)</pre>
+			<p>
+FOVAlgo takes a FOVMap x,y vantage, radius of the view, whether to include walls and then marks in the map which cells are viewable.
+</p>
+
+
+			
+
+			
+
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="FOVMap">type <a href="/src/pkg/fov.go?s=198:271#L1">FOVMap</a></h2>
+			<pre>type FOVMap struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+			
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="NewFOVMap">func <a href="/src/pkg/fov.go?s=273:314#L1">NewFOVMap</a></h3>
+				<pre>func NewFOVMap(width, height int) *FOVMap</pre>
+				
+				
+			
+
+			
+				
+				<h3 id="FOVMap.Block">func (*FOVMap) <a href="/src/pkg/fov.go?s=1022:1071#L29">Block</a></h3>
+				<pre>func (this *FOVMap) Block(x, y int, blocked bool)</pre>
+				<p>
+Block sets a cell as blocking or not.
+</p>
+
+				
+				
+			
+				
+				<h3 id="FOVMap.Clear">func (*FOVMap) <a href="/src/pkg/fov.go?s=1305:1332#L39">Clear</a></h3>
+				<pre>func (this *FOVMap) Clear()</pre>
+				<p>
+Clear resets the map to completely unblocked but unviewable.
+</p>
+
+				
+				
+			
+				
+				<h3 id="FOVMap.Height">func (*FOVMap) <a href="/src/pkg/fov.go?s=1619:1651#L54">Height</a></h3>
+				<pre>func (this *FOVMap) Height() int</pre>
+				<p>
+Height returns the height in cells of the map.
+</p>
+
+				
+				
+			
+				
+				<h3 id="FOVMap.In">func (*FOVMap) <a href="/src/pkg/fov.go?s=611:648#L14">In</a></h3>
+				<pre>func (this *FOVMap) In(x, y int) bool</pre>
+				<p>
+In returns whether the coordinate is inside the map bounds.
+</p>
+
+				
+				
+			
+				
+				<h3 id="FOVMap.Look">func (*FOVMap) <a href="/src/pkg/fov.go?s=1168:1207#L34">Look</a></h3>
+				<pre>func (this *FOVMap) Look(x, y int) bool</pre>
+				<p>
+Look indicates if the cell at the coordinate can be seen.
+</p>
+
+				
+				
+			
+				
+				<h3 id="FOVMap.Update">func (*FOVMap) <a href="/src/pkg/fov.go?s=757:834#L19">Update</a></h3>
+				<pre>func (this *FOVMap) Update(x, y, radius int, includeWalls bool, algo FOVAlgo)</pre>
+				<p>
+Update runs the give fov alogrithm on the map.
+</p>
+
+				
+				
+			
+				
+				<h3 id="FOVMap.Width">func (*FOVMap) <a href="/src/pkg/fov.go?s=1517:1548#L49">Width</a></h3>
+				<pre>func (this *FOVMap) Width() int</pre>
+				<p>
+Width returns the width in cells of the map.
+</p>
+
+				
+				
+			
+		
+			
+			
+			<h2 id="RGB">type <a href="/src/pkg/color.go?s=3583:3620#L139">RGB</a></h2>
+			<pre>type RGB struct {
+    R, G, B uint8
+}</pre>
+			<p>
+RGB represents a traditional 24-bit alpha-premultiplied color, having 8 bits for each of red, green, and blue.
+</p>
+
+
+			
+
+			
+
+			
+
+			
+				
+				<h3 id="HEX">func <a href="/src/pkg/color.go?s=3853:3875#L155">HEX</a></h3>
+				<pre>func HEX(n uint32) RGB</pre>
+				<p>
+HEX returns parses a uint32 into RGB components.
+</p>
+
+				
+			
+
+			
+				
+				<h3 id="RGB.Add">func (RGB) <a href="/src/pkg/color.go?s=4897:4940#L203">Add</a></h3>
+				<pre>func (c RGB) Add(o color.Color) color.Color</pre>
+				<p>
+Add = old + new
+</p>
+
+				
+				
+			
+				
+				<h3 id="RGB.AddAlpha">func (RGB) <a href="/src/pkg/color.go?s=4997:5056#L208">AddAlpha</a></h3>
+				<pre>func (c RGB) AddAlpha(o color.Color, a float64) color.Color</pre>
+				<p>
+AddAlpha = old + alpha*new
+</p>
+
+				
+				
+			
+				
+				<h3 id="RGB.Alpha">func (RGB) <a href="/src/pkg/color.go?s=5134:5190#L213">Alpha</a></h3>
+				<pre>func (c RGB) Alpha(o color.Color, a float64) color.Color</pre>
+				<p>
+Alpha = (1-alpha)*old + alpha*(new-old)
+</p>
+
+				
+				
+			
+				
+				<h3 id="RGB.Burn">func (RGB) <a href="/src/pkg/color.go?s=4717:4761#L193">Burn</a></h3>
+				<pre>func (c RGB) Burn(o color.Color) color.Color</pre>
+				<p>
+Burn = old + new - white
+</p>
+
+				
+				
+			
+				
+				<h3 id="RGB.Darken">func (RGB) <a href="/src/pkg/color.go?s=4508:4554#L183">Darken</a></h3>
+				<pre>func (c RGB) Darken(o color.Color) color.Color</pre>
+				<p>
+Darken = MIN(old, new)
+</p>
+
+				
+				
+			
+				
+				<h3 id="RGB.Dodge">func (RGB) <a href="/src/pkg/color.go?s=4130:4175#L168">Dodge</a></h3>
+				<pre>func (c RGB) Dodge(o color.Color) color.Color</pre>
+				<p>
+Dodge = new / (white - old)
+</p>
+
+				
+				
+			
+				
+				<h3 id="RGB.Lighten">func (RGB) <a href="/src/pkg/color.go?s=4611:4658#L188">Lighten</a></h3>
+				<pre>func (c RGB) Lighten(o color.Color) color.Color</pre>
+				<p>
+Lighten = MIN(old, new)
+</p>
+
+				
+				
+			
+				
+				<h3 id="RGB.Multiply">func (RGB) <a href="/src/pkg/color.go?s=4019:4067#L163">Multiply</a></h3>
+				<pre>func (c RGB) Multiply(o color.Color) color.Color</pre>
+				<p>
+Multiply = old * new
+</p>
+
+				
+				
+			
+				
+				<h3 id="RGB.Overlay">func (RGB) <a href="/src/pkg/color.go?s=4404:4451#L178">Overlay</a></h3>
+				<pre>func (c RGB) Overlay(o color.Color) color.Color</pre>
+				<p>
+Overlay = new.x &lt;= 0.5 ? 2*new*old : white - 2*(white-new)*(white-old)
+</p>
+
+				
+				
+			
+				
+				<h3 id="RGB.RGBA">func (RGB) <a href="/src/pkg/color.go?s=3622:3661#L143">RGBA</a></h3>
+				<pre>func (c RGB) RGBA() (r, g, b, a uint32)</pre>
+				
+				
+				
+			
+				
+				<h3 id="RGB.Scale">func (RGB) <a href="/src/pkg/color.go?s=4808:4849#L198">Scale</a></h3>
+				<pre>func (c RGB) Scale(s float64) color.Color</pre>
+				<p>
+Scale = old * s
+</p>
+
+				
+				
+			
+				
+				<h3 id="RGB.Screen">func (RGB) <a href="/src/pkg/color.go?s=4254:4300#L173">Screen</a></h3>
+				<pre>func (c RGB) Screen(o color.Color) color.Color</pre>
+				<p>
+Screen = white - (white - old) * (white - new)
+</p>
+
+				
+				
+			
+		
+		</div>
+	
+
+	
+
+
+
+
+
+
+
+	
+	
+		<h2 id="subdirectories">Subdirectories</h2>
+	
+	<table class="dir">
+	<tr>
+	<th>Name</th>
+	<th>&nbsp;&nbsp;&nbsp;&nbsp;</th>
+	<th style="text-align: left; width: auto">Synopsis</th>
+	</tr>
+	
+		<tr>
+		<td><a href="..">..</a></td>
+		</tr>
+	
+	
+		
+			<tr>
+			<td class="name"><a href="examples">examples</a></td>
+			<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+			<td style="width: auto"></td>
+			</tr>
+		
+	
+	</table>
+	
+
+
+
+</div>
+
+<div id="footer">
+Build version go1.0.2.<br>
+Except as <a href="http://code.google.com/policies.html#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="/doc/tos.html">Terms of Service</a> | 
+<a href="http://www.google.com/intl/en/privacy/privacy-policy.html">Privacy Policy</a>
+</div>
+
+</body>
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</html>
+
